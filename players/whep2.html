@@ -32,6 +32,7 @@
         window.startPlay = startPlay;
 
         window.addEventListener('message', (event) => {
+            console.log(event);
             if (event.data.source === 'flutter') {
                 console.log(event);
                 startPlay('https://livesrs.siqianginfo.com:1990/rtc/v1/whep/?app=live&stream=magic117');
