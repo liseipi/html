@@ -34,9 +34,9 @@
         console.log('init player');
         window.addEventListener('message', (event) => {
             console.log(event);
-            if (event.data.source === 'flutter') {
-                console.log(event);
-                startPlay('https://livesrs.siqianginfo.com:1990/rtc/v1/whep/?app=live&stream=magic117');
+            if (event.data.source === 'flutter' && event.data.url) {
+                // startPlay('https://livesrs.siqianginfo.com:1990/rtc/v1/whep/?app=live&stream=magic117');
+                startPlay(event.data.url);
             }
         });
     </script>
