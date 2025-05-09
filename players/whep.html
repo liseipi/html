@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SRS</title>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="js/adapter-7.4.0.min.js"></script>
+    <script type="text/javascript" src="js/srs.sdk.js"></script>
+    <script type="text/javascript" src="js/winlin.utility.js"></script>
+    <script type="text/javascript" src="js/srs.page.js"></script>
+</head>
+
+<body>
+
+    <video id="rtc_media_player" style="width: 100%; height: 100%; object-fit: fill; position: fixed; top: 0;left: 0;z-index: 10;" autoplay="true"></video>
+
+
+    <script type="text/javascript">
+        function startPlay(roomUrl) {
+            var sdk = new SrsRtcWhipWhepAsync();
+            $('#rtc_media_player').prop('srcObject', sdk.stream);
+            sdk.play(roomUrl).then(function (session) {
+
+            }).catch(function (reason) {
+                sdk.close();
+                $('#rtc_media_player').hide();
+                console.error(reason);
+            });
+        }
+    </script>
+
+
+
+</body>
+
+</html>
