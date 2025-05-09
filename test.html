@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External URL</title>
+</head>
+<body>
+    <h1>External URL Page</h1>
+    <button onclick="sendToFlutter()">Send Message to Flutter</button>
+    <p id="received-message">No message received yet.</p>
+
+    <script>
+        // 发送消息到 Flutter
+        function sendToFlutter() {
+            window.parent.postMessage({
+                source: 'external',
+                message: 'Hello from External URL!'
+            }, '*');
+        }
+
+        // 监听来自 Flutter 的消息
+        window.addEventListener('message', (event) => {
+            console.log(event);
+            if (event.data.source === 'flutter') {
+                document.getElementById('received-message').innerText = 
+                    'Received from Flutter: ' + event.data.message;
+            }
+        });
+    </script>
+</body>
+</html>
